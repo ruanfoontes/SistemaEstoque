@@ -86,8 +86,14 @@ function getFormData() {
     };
 }
 
+
+
 async function submitToServer() {
-    const endpoint = form.dataset.endpoint || '/register';
+    // Adicionamos a URL completa do seu servidor Java
+    const baseUrl = 'http://localhost:8080/'; 
+    const path = form.dataset.endpoint || '/register';
+    const endpoint = baseUrl + path;
+
     const payload = getFormData();
 
     try {
@@ -97,16 +103,19 @@ async function submitToServer() {
             body: JSON.stringify(payload)
         });
 
+        // O Java retorna apenas texto puro (como "Login OK"), 
+        // então usamos .text() em vez de .json()
         const text = await response.text();
 
         alert(text);
 
-        if (endpoint === '/register' && response.ok) {
-            window.location.href = '/';
+        if (response.ok && text.includes("sucesso")) {
+            // Se for um registro com sucesso, você pode redirecionar
+            window.location.href = 'login.html'; 
         }
     } catch (error) {
         console.error('Erro na requisição:', error);
-        alert('Erro de comunicação com o servidor. Tente novamente.');
+        alert('Não foi possível conectar ao servidor Java na porta 8080.');
     }
 }
 
