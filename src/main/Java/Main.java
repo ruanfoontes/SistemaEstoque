@@ -4,17 +4,25 @@ import com.google.gson.Gson;
 public class Main {
     public static void main(String[] args) {
 
+        System.out.println("INICIANDO SERVIDOR...");
+
         port(8080);
 
         Gson gson = new Gson();
 
-        // REGISTRO
+        // ROTA TESTE
+        get("/", (req, res) -> "Servidor rodando");
+
+        // REGISTER
         post("/register", (req, res) -> {
             User user = gson.fromJson(req.body(), User.class);
 
-            Database.users.put(user.email, user.password);
+            if (Database.users.containsKey(user.email)) {
+                return "Usuário já existe";
+            }
 
-            return "Usuário registrado!";
+            Database.users.put(user.email, user.password);
+            return "Usuário registrado com sucesso";
         });
 
         // LOGIN
@@ -27,7 +35,9 @@ public class Main {
                 return "Login OK";
             }
 
-            return "Erro no login";
+            return "Email ou senha inválidos";
         });
+
+        System.out.println("SERVIDOR PRONTO");
     }
 }
