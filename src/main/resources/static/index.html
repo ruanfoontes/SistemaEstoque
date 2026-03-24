@@ -15,14 +15,19 @@
 
         <div class="container">
 
-            <form method="post">
-
+            <form method="post" class="validator">
                 <h2 class="title">Login</h2>
+                <label>
+                    <input type="email" placeholder="Email" id="input-user" data-rules="required|email">
+                </label>
 
-                <input type="text" placeholder="Username" id="input-user">
-                <input type="password" placeholder="Password" id="input-pass">
+                <label>
+                    <input type="password" placeholder="Password" id="input-pass"  data-rules="required|min=6">
+                </label>
 
-                <button type="submit" class="bnt-login">Login</button>
+                <label>
+                    <button type="submit" class="bnt-login" style="margin-top: 10px;">Login</button>
+                </label>
 
                 <div class="cadastro">
                     <span id="register">Ainda não tem uma conta? <a href="register.html">Cadastre-se</a></span>

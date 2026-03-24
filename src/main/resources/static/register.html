@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
+    <link rel="shortcut icon" href="/src/main/resources/static/image/caixas.png" type="image/x-icon">
+    <title>Sistema Estoque</title>
+</head>
+    <body>
+        <div class="container">
+
+            <form method="post"  class="validator">
+                <h2 class="title">Cadastre-se</h2>
+                <label>
+                    <input type="text" placeholder="Usuario" id="input-user" data-rules="required|min=2">
+                </label>
+                <label>
+                    <input type="email" placeholder="Email" id="input-email" data-rules="required|email">
+                </label>
+
+                <label>
+                    <input type="password" placeholder="Password" id="input-pass"  data-rules="required|min=6">
+                </label>
+
+                <label>
+                    <div class="termos-servico">
+                        <input type="checkbox" name="check" id="check-direitos" data-rules="required|checked">
+                        <span><a href="">Li e concordo com os termos de serviço</a></span>
+                    </div>
+                </label>
+
+                <label>
+                    <button type="submit" class="bnt-login">Cadastrar</button>
+                </label>
+
+                <div class="cadastro">
+                    <span id="register">Ainda não tem uma conta? <a href="index.html">Faça login</a></span>
+                </div>
+            </form>
+        </div>
+
+    </section>
+
+    <script src="javascript/script.js"></script>
+    </body>
+</html>
