@@ -30,6 +30,8 @@ public class Main {
         post("/register", (req, res) -> {
             User user = gson.fromJson(req.body(), User.class);
 
+            System.out.println("Dados recebidos no Java: " + req.body());
+
             if (Database.users.containsKey(user.email)) {
                 return "Usuário já existe";
             }
