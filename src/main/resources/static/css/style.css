@@ -10,7 +10,7 @@
 
 body {
 
-    background-image:url('/src/main/resources/static/image/image_background.png');
+    background-image:url('../image/image_background.png');
     background-size: cover;           
     background-position: center;      
     background-attachment: fixed;    

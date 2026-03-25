@@ -76,7 +76,7 @@ let form = document.querySelector('.validator');
 //
 
 function getFormData() {
-    const emailInput = form.querySelector('#input-user');
+    const emailInput = form.querySelector('#input-email');
     const passInput = form.querySelector('#input-pass');
 
     return {
