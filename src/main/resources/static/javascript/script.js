@@ -48,12 +48,10 @@
                 }
             }
         }
-
         return true;
     },
     showError: (input, error) => {
         input.style.borderColor = '#FF0000';
-
         let errorElement = document.createElement('div');
         errorElement.classList.add('error');
         errorElement.innerHTML = error;
@@ -73,8 +71,6 @@
 
 let form = document.querySelector('.validator');
 
-//
-
 function getFormData() {
     const emailInput = form.querySelector('#input-email');
     const passInput = form.querySelector('#input-pass');
@@ -86,10 +82,7 @@ function getFormData() {
     };
 }
 
-
-
 async function submitToServer() {
-    // Adicionamos a URL completa do seu servidor Java
     console.log("Tentando enviar para o Java...");
     const baseUrl = 'http://localhost:8080';
     const path = form.dataset.endpoint || '/register';
@@ -104,15 +97,18 @@ async function submitToServer() {
             body: JSON.stringify(payload)
         });
 
-        // O Java retorna apenas texto puro (como "Login OK"), 
-        // então usamos .text() em vez de .json()
         const text = await response.text();
+        console.log("Resposta do java:", text);
 
-        alert(text);
-
-        if (response.ok && text.includes("sucesso")) {
-            // Se for um registro com sucesso, você pode redirecionar
-            window.location.href = 'index.html';
+        if (text.includes("Login OK") || text.includes("sucesso") || response.ok) {
+            alert("Sucesso!");
+            if (path === '/register') {
+                window.location.href = 'index.html';
+            } else {
+                window.location.href = 'homepage.html';
+            }
+        } else {
+            alert("Dados incorretos ou erro no servidor.");
         }
     } catch (error) {
         console.error('Erro na requisição:', error);
