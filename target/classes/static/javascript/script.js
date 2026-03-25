@@ -111,7 +111,7 @@ async function submitToServer() {
 
         if (response.ok && text.includes("sucesso")) {
             // Se for um registro com sucesso, você pode redirecionar
-            window.location.href = 'login.html'; 
+            window.location.href = 'index.html';
         }
     } catch (error) {
         console.error('Erro na requisição:', error);
