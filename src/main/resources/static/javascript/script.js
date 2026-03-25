@@ -90,7 +90,8 @@ function getFormData() {
 
 async function submitToServer() {
     // Adicionamos a URL completa do seu servidor Java
-    const baseUrl = 'http://localhost:8080/'; 
+    console.log("Tentando enviar para o Java...");
+    const baseUrl = 'http://localhost:8080';
     const path = form.dataset.endpoint || '/register';
     const endpoint = baseUrl + path;
 
