@@ -48,12 +48,10 @@
                 }
             }
         }
-
         return true;
     },
     showError: (input, error) => {
         input.style.borderColor = '#FF0000';
-
         let errorElement = document.createElement('div');
         errorElement.classList.add('error');
         errorElement.innerHTML = error;
@@ -73,8 +71,6 @@
 
 let form = document.querySelector('.validator');
 
-//
-
 function getFormData() {
     const emailInput = form.querySelector('#input-email');
     const passInput = form.querySelector('#input-pass');
@@ -88,7 +84,6 @@ function getFormData() {
 
 async function submitToServer() {
     console.log("Tentando enviar para o Java...");
-
     const baseUrl = 'http://localhost:8080';
     const path = form.dataset.endpoint || '/register';
     const endpoint = baseUrl + path;
@@ -105,21 +100,16 @@ async function submitToServer() {
         const text = await response.text();
         console.log("Resposta do java:", text);
 
-        // Se o Java responder "Login OK" ou contiver "sucesso"
         if (text.includes("Login OK") || text.includes("sucesso") || response.ok) {
             alert("Sucesso!");
-
             if (path === '/register') {
-                // Se for cadastro, volta pro login
                 window.location.href = 'index.html';
             } else {
-                // Se for login, vai para a home
                 window.location.href = 'homepage.html';
             }
         } else {
             alert("Dados incorretos ou erro no servidor.");
         }
-
     } catch (error) {
         console.error('Erro na requisição:', error);
         alert('Não foi possível conectar ao servidor Java na porta 8080.');
@@ -127,4 +117,34 @@ async function submitToServer() {
 }
 
 form.addEventListener('submit', validator.handleSubmit);
-}
+
+
+
+
+
+
+
+
+
+
+
+//icones do linkedin
+
+        const btnLinkedin = document.getElementById('btn-linkedin');
+        const menuDevs = document.getElementById('menu-devs');
+
+        // Abre/Fecha ao clicar no ícone
+        btnLinkedin.addEventListener('click', (e) => {
+            e.stopPropagation(); // Impede o clique de chegar no 'window'
+            menuDevs.classList.toggle('mostrar');
+        });
+
+        // Fecha o menu se clicar em qualquer outro lugar da tela
+        window.addEventListener('click', () => {
+            if (menuDevs.classList.contains('mostrar')) {
+                menuDevs.classList.remove('mostrar');
+            }
+        });
+
+
+/// 
