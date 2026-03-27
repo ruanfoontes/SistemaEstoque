@@ -42,12 +42,13 @@ nav ul {
 }
 
 /* Selecione o link ou a palavra (ex: os itens do seu menu) */
+/* Navegação padrão */
 .nav-item {
     position: relative; /* Necessário para posicionar a linha */
     text-decoration: none;
     color: #333;
     padding-bottom: 5px;
-    font-weight: 500px; /* Espaço para a linha não colar na letra */
+    font-weight: 500px;
     font-size: 14px;
 }
 
@@ -58,9 +59,26 @@ nav ul {
     bottom: 0;
     width: 0; /* Começa com largura 0 */
     height: 2px; /* Espessura da linha */
-    background-color: #27ae60; /* A cor verde do seu sistema */
-    transition: width 0.3s ease; /* Faz a linha "crescer" suavemente */
+    background-color: #27ae60;
+    transition: width 0.3s ease;
 }
+
+/* .active indica a rota/página atual */
+.nav-item.active {
+    color: #1aaf1ae0;
+    font-weight: 700;
+}
+
+.nav-item.active::after {
+    width: 100%;
+}
+
+/*  Comentário de uso:
+    - Ao abrir cada página, pesquise o link correspondente (Dashboard, Produtos, etc.)
+    - Adicione a classe `active` nesse <a>
+    - Exemplo: <a href="produtos.html" class="nav-item active">... </a>
+    - Isso garante clareza de navegação para o usuário atual.
+*/
 
 .nav-item:hover::after {
     width: 100%; /* No hover, a linha ocupa 100% da palavra */

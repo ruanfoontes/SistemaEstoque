@@ -193,6 +193,16 @@ form label.input-group input {
     padding: 4px;
 }
 
+.nav-item.active {
+    color: #1aaf1ae0;
+    font-weight: 700;
+}
+
+.nav-item.active::after {
+    width: 100%;
+}
+
+
 .termos-servico {
     width: 100%;
     height: 30px;
