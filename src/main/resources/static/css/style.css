@@ -178,7 +178,7 @@ form label {
 }
 
 .menu-title {
-    background: #0077b5;
+    background: #259708c9;
     color: white;
     padding: 8px 12px;
     font-size: 12px;
@@ -191,7 +191,7 @@ form label {
 .dev-menu a {
     padding: 12px 15px;
     text-decoration: none;
-    color: #333;
+    color: #259708c9;
     font-family: 'Segoe UI', sans-serif;
     font-size: 14px;
     transition: 0.2s;
@@ -200,7 +200,7 @@ form label {
 
 .dev-menu a:hover {
     background: #f4f4f4;
-    color: #0077b5;
+    color: #24af02;
     padding-left: 20px; 
 }
 

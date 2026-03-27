@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css//abaprodutos.css">
+    <link rel="shortcut icon" href="image/caixas.png" type="image/x-icon">
+    <title>Sistema Estoque</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Sistema de Estoque</h1>
+        <nav>
+            <ul>
+                <li><a href="homepage.html" class="nav-item">Dashboard</a></li>
+                <li><a href="#" class="nav-item">Produtos</a></li>
+                <li><a href="#" class="nav-item">Entradas/Saídas</a></li>
+                <li><a href="#" class="nav-item">Relatórios</a></li>
+                <li><a href="#" class="nav-item">Configurações</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <aside>
+        <h2>Categorias</h2>
+        <section>
+            <input type="text" placeholder="Search">
+            <button type="button">Pesquisar</button>
+        </section>
+        <ul>
+            <li>Todos</li>
+            <li>Eletrônicos</li>
+            <li>Alimentos</li>
+            <li>Vestuário</li>
+            <li>Material de Escritório</li>
+        </ul>
+    </aside>
+    <main class="inventory-panel">
+        <div class="panel-header">
+            <div>
+                <h2 id="currentCategoryTitle">Todos os Produtos</h2>
+                <p class="subtitle">Gerencie o saldo e a localização dos itens</p>
+            </div>
+            <button class="btn-primary" onclick="openModal()">
+                <i class="fas fa-plus"></i> Adicionar Produto
+            </button>
+        </div>
+
+        <div class="table-container">
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome do Produto</th>
+                        <th>Categoria</th>
+                        <th>Qtd. Estoque</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="productLog">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <h3>Novo Item de Estoque</h3>
+            <div class="form-group">
+                <label>Nome do Produto</label>
+                <input type="text" id="pName" placeholder="Ex: Parafuso Aço">
+            </div>
+            <div class="form-group">
+                <label>Categoria</label>
+                <select id="pCategory">
+                    <option value="Eletrônicos">Eletrônicos</option>
+                    <option value="Alimentos">Alimentos</option>
+                    <option value="Vestuário">Vestuário</option>
+                    <option value="Material de Escritório">Material de Escritório</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Quantidade Inicial</label>
+                <input type="number" id="pStock" value="0">
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                <button class="btn-save" onclick="saveProduct()">Salvar no Estoque</button>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>© 2026 ECO-STOCK. Todos os direitos reservados.</p>
+        
+    </footer>
+
+    <script src="javascript/adicionarProduto.js"></script>
+
+</body>
+
+</html>
