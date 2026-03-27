@@ -97,14 +97,59 @@ aside h2 {
     margin-top: -45px;
     margin-bottom: 25px;
     color: rgb(9, 77, 9);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+aside h2::before {
+    content: "\f03a";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 20px;
+    color: #1aaf1ae0;
 }
 
 aside input {
     width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #27ae60;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.category-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     padding: 10px;
-    border: 1px solid green;
-    border-radius: 6px;
-    margin-bottom: 20px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(0,0,0,0.07);
+    cursor: pointer;
+    font-weight: 600;
+    color: #264d24;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.category-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    background: #e8f7ea;
+}
+
+.category-list li i {
+    width: 22px;
+    text-align: center;
+    color: #1aaf1ae0;
 }
 
 aside ul {
