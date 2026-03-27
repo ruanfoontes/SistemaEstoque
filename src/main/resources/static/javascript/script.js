@@ -117,3 +117,34 @@ async function submitToServer() {
 }
 
 form.addEventListener('submit', validator.handleSubmit);
+
+
+
+
+
+
+
+
+
+
+
+//icones do linkedin
+
+        const btnLinkedin = document.getElementById('btn-linkedin');
+        const menuDevs = document.getElementById('menu-devs');
+
+        // Abre/Fecha ao clicar no ícone
+        btnLinkedin.addEventListener('click', (e) => {
+            e.stopPropagation(); // Impede o clique de chegar no 'window'
+            menuDevs.classList.toggle('mostrar');
+        });
+
+        // Fecha o menu se clicar em qualquer outro lugar da tela
+        window.addEventListener('click', () => {
+            if (menuDevs.classList.contains('mostrar')) {
+                menuDevs.classList.remove('mostrar');
+            }
+        });
+
+
+/// 

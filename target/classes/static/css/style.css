@@ -6,6 +6,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", Arial, Helvetica, sans-serif;
+    
+
+    
 }
 
 body {
@@ -15,6 +18,8 @@ body {
     background-position: center;      
     background-attachment: fixed;    
     background-repeat: no-repeat;
+   
+    
     
 }
 
@@ -133,4 +138,79 @@ form label {
 .termos-servico span {
     font-size: 11px;
     width: 100%;
+}
+
+
+.social-container {
+    position: fixed;
+    bottom: 20px;       
+    left: 20px;         
+    display: flex;
+    gap: 15px;          
+    z-index: 1000;      
+}
+
+
+.social-icon {
+    width: 35px;        
+    height: 35px;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+
+.dev-menu {
+    position: absolute;
+    bottom: 50px;       
+    left: 0;            
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: none;      
+    flex-direction: column;
+    min-width: 180px;
+}
+
+.menu-title {
+    background: #0077b5;
+    color: white;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+.dev-menu a {
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    transition: 0.2s;
+    border-bottom: 1px solid #eee;
+}
+
+.dev-menu a:hover {
+    background: #f4f4f4;
+    color: #0077b5;
+    padding-left: 20px; 
+}
+
+
+@keyframes surgindo {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.mostrar {
+    display: flex !important;
 }
