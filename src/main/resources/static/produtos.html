@@ -4,22 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css//abaprodutos.css">
+    <link rel="stylesheet" href="css/abaprodutos.css">
     <link rel="shortcut icon" href="image/caixas.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/2e5602d94c.js" crossorigin="anonymous"></script>
     <title>Sistema Estoque</title>
 </head>
 
 <body>
 
     <header>
-        <h1>Sistema de Estoque</h1>
+        <h1><i class="fas fa-warehouse"></i> Sistema de Estoque</h1>
         <nav>
             <ul>
-                <li><a href="homepage.html" class="nav-item">Dashboard</a></li>
-                <li><a href="#" class="nav-item">Produtos</a></li>
-                <li><a href="#" class="nav-item">Entradas/Saídas</a></li>
-                <li><a href="#" class="nav-item">Relatórios</a></li>
-                <li><a href="#" class="nav-item">Configurações</a></li>
+                <li><a href="homepage.html" class="nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#" class="nav-item"><i class="fas fa-boxes"></i> Produtos</a></li>
+                <li><a href="#" class="nav-item"><i class="fas fa-truck-loading"></i> Entradas/Saídas</a></li>
+                <li><a href="#" class="nav-item"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+                <li><a href="#" class="nav-item"><i class="fas fa-cog"></i> Configurações</a></li>
             </ul>
         </nav>
     </header>
@@ -42,8 +43,8 @@
     <main class="inventory-panel">
         <div class="panel-header">
             <div>
-                <h2 id="currentCategoryTitle">Todos os Produtos</h2>
-                <p class="subtitle">Gerencie o saldo e a localização dos itens</p>
+                <h2 id="currentCategoryTitle"><i class="fas fa-box"></i> Todos os Produtos</h2>
+                <p class="subtitle"><i class="fas fa-map-marker-alt"></i> Gerencie o saldo e a localização dos itens</p>
             </div>
             <button class="btn-primary" onclick="openModal()">
                 <i class="fas fa-plus"></i> Adicionar Produto
