@@ -45,3 +45,4 @@ desktop.ini
 # Optional (se usar Node/JS)
 node_modules/
 dist/
+*.db
