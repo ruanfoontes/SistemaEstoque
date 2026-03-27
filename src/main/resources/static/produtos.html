@@ -18,7 +18,7 @@
             <ul>
                 <li><a href="homepage.html" class="nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="#" class="nav-item"><i class="fas fa-boxes"></i> Produtos</a></li>
-                <li><a href="#" class="nav-item"><i class="fas fa-truck-loading"></i> Entradas/Saídas</a></li>
+                <li><a href="#" class="nav-item"><i class="fas fa-exchange-alt"></i> Entradas/Saídas</a></li>
                 <li><a href="#" class="nav-item"><i class="fas fa-chart-line"></i> Relatórios</a></li>
                 <li><a href="#" class="nav-item"><i class="fas fa-cog"></i> Configurações</a></li>
             </ul>
@@ -26,21 +26,24 @@
     </header>
 
 
-    <aside>
-        <h2>Categorias</h2>
+    <main>
+        <aside>
+            <h2>Categorias</h2>
+            <section>
+                <input type="text" placeholder="Search">
+                <button type="button"><i class="fas fa-search"></i> Pesquisar</button>
+            </section>
+            <ul class="category-list">
+                <li><i class="fas fa-layer-group"></i> Todos</li>
+                <li><i class="fas fa-tv"></i> Eletrônicos</li>
+                <li><i class="fas fa-apple-alt"></i> Alimentos</li>
+                <li><i class="fas fa-tshirt"></i> Vestuário</li>
+                <li><i class="fas fa-pen-fancy"></i> Material de Escritório</li>
+            </ul>
+        </aside>
+
         <section>
-            <input type="text" placeholder="Search">
-            <button type="button"><i class="fas fa-search"></i> Pesquisar</button>
-        </section>
-        <ul class="category-list">
-            <li><i class="fas fa-layer-group"></i> Todos</li>
-            <li><i class="fas fa-tv"></i> Eletrônicos</li>
-            <li><i class="fas fa-apple-alt"></i> Alimentos</li>
-            <li><i class="fas fa-tshirt"></i> Vestuário</li>
-            <li><i class="fas fa-pen-fancy"></i> Material de Escritório</li>
-        </ul>
-    </aside>
-    <main class="inventory-panel">
+            <div class="inventory-panel">
         <div class="panel-header">
             <div>
                 <h2 id="currentCategoryTitle"><i class="fas fa-box"></i> Todos os Produtos</h2>
@@ -67,6 +70,8 @@
                 </tbody>
             </table>
         </div>
+    </div>
+        </section>
     </main>
 
     <div id="productModal" class="modal">
