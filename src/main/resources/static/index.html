@@ -18,18 +18,18 @@
 
             <form method="post" class="validator" data-endpoint="/login">
                 <h2 class="title"><i class="fas fa-sign-in-alt"></i> Login</h2>
-                <label>
+                <label class="input-group">
                     <i class="fas fa-envelope"></i>
                     <input type="email" placeholder="Email" id="input-email" data-rules="required|email" name="email">
                 </label>
 
-                <label>
+                <label class="input-group">
                     <i class="fas fa-lock"></i>
                     <input type="password" placeholder="Password" id="input-pass" data-rules="required|min=6"
                         name="password">
                 </label>
 
-                <label>
+                <label id="label-button-login">
                     <button type="submit" class="bnt-login" style="margin-top: 10px;">Login</button>
                 </label>
 
