@@ -214,3 +214,64 @@ form label {
 .mostrar {
     display: flex !important;
 }
+
+/* Responsividade geral */
+@media (max-width: 1024px) {
+    .container {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    form {
+        width: min(90%, 420px);
+        padding: 25px;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin: 20px 0;
+    }
+
+    input {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .social-container {
+        position: static;
+        margin: 20px auto 0;
+        justify-content: center;
+        background: rgba(255,255,255,0.85);
+        padding: 10px 15px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 640px) {
+    body {
+        background-attachment: scroll;
+    }
+
+    .container {
+        padding: 20px 10px;
+    }
+
+    .title {
+        font-size: 1.7rem;
+    }
+
+    .cadastro {
+        padding: 14px 10px;
+        text-align: center;
+    }
+
+    .social-container {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .dev-menu {
+        right: 0;
+        left: auto;
+    }
+}

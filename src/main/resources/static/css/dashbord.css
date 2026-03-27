@@ -268,3 +268,74 @@ button:hover {
     transform: translateY(-2px);
 }
 
+@media (max-width: 1024px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    aside {
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
+
+    .visao-geral-item {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .total-itens,
+    .validation-item {
+        width: 100%;
+    }
+
+    .prod-recent {
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .table-produtos {
+        overflow-x: auto;
+        max-width: 100%;
+    }
+
+    #tabela-produtos th,
+    #tabela-produtos td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .visao-geral-title h1,
+    .prod-recent-title h1 {
+        font-size: 1.1rem;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    footer button {
+        width: 100%;
+    }
+}
+
+
