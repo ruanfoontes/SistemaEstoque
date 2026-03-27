@@ -1,21 +1,35 @@
 import static spark.Spark.*;
 import com.google.gson.Gson;
-public class Main {
-    public static void main(String[] args) {
+import java.sql.*;
 
-        System.out.println("INICIANDO SERVIDOR...");
+public class Main {
+    // Conf do Banco de dados H2 (cria um arquivo chamado dados_estoque.mv.db)
+    private static final String URL = "jdbc:h2:./dados_estoque";
+    private static final String USER = "sa";
+    private static final String PASS = "";
+
+    public static void main(String[] args) {
+        System.out.println("INICIANDO O SERVIDOR E BANCO DE DADOS...");
+
+        // inicializa o banco de dados (cria tabela se não existir)
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
+             Statement stmt = conn.createStatement()) {
+
+            stmt.execute("CREATE TABLE IF NOT EXISTS usuarios (" +
+                    "email VARCHAR(255) PRIMARY KEY, " +
+                    "password VARCHAR(255))");
+            System.out.println("Banco de Dados Ok!");
+
+        } catch (SQLException e) {
+            System.err.println("ERRO AO INICIAR BANCO: " + e.getMessage()); // Corrigido getMessage
+        }
 
         port(8080);
 
+        // CONFIGURAÇÃO CORS
         options("/*", (request, response) -> {
-            String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
-            if (accessControlRequestHeaders != null) {
-                response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
-            }
-            String accessControlRequestMethod = request.headers("Access-Control-Request-Method");
-            if (accessControlRequestMethod != null) {
-                response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
-            }
+            String headers = request.headers("Access-Control-Request-Headers");
+            if (headers != null) response.header("Access-Control-Allow-Headers", headers);
             return "OK";
         });
 
@@ -24,35 +38,50 @@ public class Main {
         Gson gson = new Gson();
 
         // ROTA TESTE
-        get("/", (req, res) -> "Servidor rodando");
+        get("/", (req, res) -> "Servidor rodando com Banco de Dados H2!");
 
-        // REGISTER
+        // REGISTER (SALVA NO BANCO DE DADOS)
         post("/register", (req, res) -> {
             User user = gson.fromJson(req.body(), User.class);
+            System.out.println("Tentando registrar: " + user.email);
 
-            System.out.println("Dados recebidos no Java: " + req.body());
-
-            if (Database.users.containsKey(user.email)) {
-                return "Usuário já existe";
+            try (Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
+                String sql = "INSERT INTO usuarios (email, password) VALUES (?, ?)";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, user.email);
+                pstmt.setString(2, user.password);
+                pstmt.executeUpdate();
+                return "Usuário registrado com sucesso!";
+            } catch (SQLException e) {
+                res.status(400);
+                return "Erro: Usuário já existe ou erro no banco.";
             }
-
-            Database.users.put(user.email, user.password);
-            return "Usuário registrado com sucesso";
         });
 
-        // LOGIN
+        // LOGIN (CONSULTA NO BANCO DE DADOS)
         post("/login", (req, res) -> {
             User user = gson.fromJson(req.body(), User.class);
+            System.out.println("Tentando login: " + user.email);
 
-            String senha = Database.users.get(user.email);
+            try (Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
+                String sql = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, user.email);
+                pstmt.setString(2, user.password);
 
-            if (senha != null && senha.equals(user.password)) {
-                return "Login OK";
+                ResultSet rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    return "Login OK";
+                } else {
+                    res.status(401);
+                    return "Email ou senha inválidos";
+                }
+            } catch (SQLException e) {
+                res.status(500);
+                return "Erro interno no servidor de banco.";
             }
-
-            return "Email ou senha inválidos";
         });
 
-        System.out.println("SERVIDOR PRONTO");
+        System.out.println("SERVIDOR PRONTO NA PORTA 8080");
     }
 }
