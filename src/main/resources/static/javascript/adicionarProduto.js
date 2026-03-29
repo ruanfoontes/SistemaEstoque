@@ -22,6 +22,7 @@ function saveProduct() {
     inventory.push(newProduct);
     renderTable(inventory);
     closeModal();
+    
 }
 
 function renderTable(data) {
@@ -40,17 +41,29 @@ function renderTable(data) {
 
 
 function deleteItem(id) {
-    
-    const confirmar = confirm(`Tem certeza que deseja excluir o produto #${id}?`);
+    const modal = document.getElementById('customModal');
+    const btnConfirm = document.getElementById('btnConfirm');
+    const btnCancel = document.getElementById('btnCancel');
 
-    if (confirmar) {
-        
+    // 1. Mostra o Modal
+    modal.style.display = 'flex';
+
+    // 2. Se clicar em Cancelar, apenas fecha
+    btnCancel.onclick = () => {
+        modal.style.display = 'none';
+    };
+
+    // 3. Se clicar em Confirmar, executa a lógica
+    btnConfirm.onclick = () => {
+        // Lógica de exclusão que você já tinha
         inventory = inventory.filter(produto => produto.id !== id);
-
         
         renderTable(inventory);
-
-        
         console.log(`Produto #${id} removido com sucesso.`);
-    }
+        
+        // Fecha o modal
+        modal.style.display = 'none';
+        
+        // Dica: Se estiver usando MySQL, aqui você chamaria a rota do backend!
+    };
 }

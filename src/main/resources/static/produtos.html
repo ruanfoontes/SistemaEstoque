@@ -44,33 +44,34 @@
 
         <section>
             <div class="inventory-panel">
-        <div class="panel-header">
-            <div>
-                <h2 id="currentCategoryTitle"><i class="fas fa-box"></i> Todos os Produtos</h2>
-                <p class="subtitle"><i class="fas fa-map-marker-alt"></i> Gerencie o saldo e a localização dos itens</p>
-            </div>
-            <button class="btn-primary" onclick="openModal()">
-                <i class="fas fa-plus"></i> Adicionar Produto
-            </button>
-        </div>
+                <div class="panel-header">
+                    <div>
+                        <h2 id="currentCategoryTitle"><i class="fas fa-box"></i> Todos os Produtos</h2>
+                        <p class="subtitle"><i class="fas fa-map-marker-alt"></i> Gerencie o saldo e a localização dos
+                            itens</p>
+                    </div>
+                    <button class="btn-primary" onclick="openModal()">
+                        <i class="fas fa-plus"></i> Adicionar Produto
+                    </button>
+                </div>
 
-        <div class="table-container">
-            <table id="productTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome do Produto</th>
-                        <th>Categoria</th>
-                        <th>Qtd. Estoque</th>
-                        <th>Status</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="productLog">
-                </tbody>
-            </table>
-        </div>
-    </div>
+                <div class="table-container">
+                    <table id="productTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome do Produto</th>
+                                <th>Categoria</th>
+                                <th>Qtd. Estoque</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productLog">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -100,11 +101,21 @@
             </div>
         </div>
     </div>
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>🗑️ Excluir Item</h3>
+            <p>Tem certeza que deseja remover este produto do estoque?</p>
+            <div class="modal-buttons">
+                <button id="btnCancel" class="btn-secondary">Cancelar</button>
+                <button id="btnConfirm" class="btn-danger">Sim, Excluir</button>
+            </div>
+        </div>
+    </div>
 
 
     <footer>
         <p>© 2026 ECO-STOCK. Todos os direitos reservados.</p>
-        
+
     </footer>
 
     <script src="javascript/adicionarProduto.js"></script>
