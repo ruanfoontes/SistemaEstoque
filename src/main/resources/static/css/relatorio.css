@@ -1,0 +1,381 @@
+/* essa parte do css é para todas as sub paginas, entao so copiar e colar */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: white;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
+header {
+    background-color: white;
+    padding: 26px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+header h1 {
+    color: rgb(24, 139, 24);
+    font-size: 29px;
+    letter-spacing: 1px;
+    margin-left: 13px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+/* Selecione o link ou a palavra (ex: os itens do seu menu) */
+/* Navegação padrão */
+.nav-item {
+    position: relative; /* Necessário para posicionar a linha */
+    text-decoration: none;
+    color: #333;
+    padding-bottom: 5px;
+    font-weight: 500px;
+    font-size: 14px;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0; /* Começa com largura 0 */
+    height: 2px; /* Espessura da linha */
+    background-color: #27ae60;
+    transition: width 0.3s ease;
+}
+
+/* .active indica a rota/página atual */
+.nav-item.active {
+    color: #1aaf1ae0;
+    font-weight: 700;
+}
+
+.nav-item.active::after {
+    width: 100%;
+}
+
+/*  Comentário de uso:
+    - Ao abrir cada página, pesquise o link correspondente (Dashboard, Produtos, etc.)
+    - Adicione a classe `active` nesse <a>
+    - Exemplo: <a href="produtos.html" class="nav-item active">... </a>
+    - Isso garante clareza de navegação para o usuário atual.
+*/
+
+.nav-item:hover::after {
+    width: 100%; /* No hover, a linha ocupa 100% da palavra */
+}
+
+
+nav ul li a:hover {
+    color: rgb(19, 199, 19);
+    
+}
+
+
+main {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 30px;
+    padding: 30px;
+    background-color:#d7e8d8 ;
+    flex: 1;
+}
+
+
+aside {
+    background-color: rgba(91, 223, 102, 0.541);
+    border: 1px solid #f0f0f0;
+    padding: 10px;
+    margin-top:30px ;
+    border-radius: 10px;
+    height: 360px;
+    max-width: 300px;
+}
+
+aside h2 {
+    font-size: 23px;
+    margin-top: -45px;
+    margin-bottom: 25px;
+    color: rgb(9, 77, 9);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+aside h2::before {
+    content: "\f03a";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 20px;
+    color: #1aaf1ae0;
+}
+
+aside input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #27ae60;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.category-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(0,0,0,0.07);
+    cursor: pointer;
+    font-weight: 600;
+    color: #264d24;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.category-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    background: #e8f7ea;
+}
+
+.category-list li i {
+    width: 22px;
+    text-align: center;
+    color: #1aaf1ae0;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f9f9f9;
+    font-size: 14px;
+    color: rgb(94, 86, 86);
+    cursor: pointer;
+}
+
+aside ul li:hover {
+    color: green;
+    font-weight: bold;
+}footer {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fdfdfd;
+    border-top: 1px solid #eee;
+}
+
+footer p {
+    font-size: 12px;
+    color: #aaa;
+}
+
+button {
+    background-color: rgb(15, 99, 15);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: linear 0.2s;
+    margin-bottom: 7px;
+}
+
+button:hover {
+    background-color: green;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    aside {
+        width: 100%;
+        margin-top: 0;
+        height: auto;
+    }
+
+    .inventory-panel {
+        margin: 0;
+        padding: 15px;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table, th, td {
+        font-size: 0.85rem;
+    }
+
+    .modal-content {
+        width: min(95%, 420px);
+        margin: 15% auto;
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .panel-header button,
+    button {
+        width: 100%;
+    }
+
+    .prod-recent {
+        margin-top: 20px;
+    }
+
+    #tabela-produtos thead,
+    #tabela-produtos tbody td,
+    #tabela-produtos tbody th {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+}
+
+
+
+
+
+/* a partir daqui o css e original de cada pagina */
+
+:root {
+    --verde-primario: #2e7d32; /* O verde do seu logo/botões */
+    --verde-fundo: #dcedc8;    /* O fundo esverdeado claro */
+    --verde-botao-entrada: #00c853;
+    --rosa-saida: #ff5252;
+    --texto: #263238;
+}
+
+body {
+    background-color: #f1f8e9; /* Fundo suave da imagem */
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--texto);
+}
+
+.main-container {
+    padding: 20px;
+    max-width: 900px;
+}
+
+/* Estilo das Abas */
+.tabs-navigation {
+    display: flex;
+    gap: 5px;
+    border-bottom: 2px solid #cfd8dc;
+    margin-bottom: 20px;
+}
+
+.tab-link {
+    padding: 10px 25px;
+    border: none;
+    background: #b4b4b4;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+    transition: 0.3s;
+}
+
+.tab-link.active {
+    background-color: var(--verde-primario);
+    color: white;
+}
+
+/* Card do Produto (Igual à imagem) */
+.product-card-green {
+    background-color: var(--verde-primario);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.btn-action {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.btn-entrada { background-color: var(--verde-botao-entrada); color: white; }
+.btn-saida { background-color: var(--rosa-saida); color: white; }
+
+/* Tabela de Relatório */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.custom-table {
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+
+.custom-table th {
+    background-color: var(--verde-primario);
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.custom-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}

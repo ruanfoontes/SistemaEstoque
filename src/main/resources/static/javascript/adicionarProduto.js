@@ -67,3 +67,14 @@ function deleteItem(id) {
         // Dica: Se estiver usando MySQL, aqui você chamaria a rota do backend!
     };
 }
+
+
+
+
+// script da aba Relatorios
+
+
+
+
+
+// aqui acaba o script da aba relatorios
