@@ -82,7 +82,10 @@ function getFormData() {
     };
 }
 
-async function submitToServer() {
+async function submitToServer(event) {
+    // Se você passar o evento, previne o refresh da página
+    if (event) event.preventDefault();
+
     console.log("Tentando enviar para o Java...");
     const baseUrl = 'http://localhost:8080';
     const path = form.dataset.endpoint || '/register';
@@ -100,19 +103,23 @@ async function submitToServer() {
         const text = await response.text();
         console.log("Resposta do java:", text);
 
-        if (text.includes("Login OK") || text.includes("sucesso") || response.ok) {
-            alert("Sucesso!");
-            if (path === '/register') {
-                window.location.href = 'index.html';
-            } else {
-                window.location.href = 'homepage.html';
-            }
+        if (response.ok || text.includes("sucesso")) {
+            console.log("Login confirmado. Iniciando redirecionamento...");
+
+            // Forçar o caminho correto
+            const destino = (path === '/register') ? 'index.html' : 'homepage.html'; // Ajuste 'dashboard.html' para o seu nome real
+
+            console.log("Tentando navegar para: " + destino);
+
+            // O replace é melhor que o href para redirecionamentos de login
+            window.location.assign(destino);
+
         } else {
-            alert("Dados incorretos ou erro no servidor.");
+            alert("Dados incorretos.");
         }
     } catch (error) {
         console.error('Erro na requisição:', error);
-        alert('Não foi possível conectar ao servidor Java na porta 8080.');
+        alert('Não foi possível conectar ao servidor Java.');
     }
 }
 
@@ -130,21 +137,21 @@ form.addEventListener('submit', validator.handleSubmit);
 
 //icones do linkedin
 
-        const btnLinkedin = document.getElementById('btn-linkedin');
-        const menuDevs = document.getElementById('menu-devs');
+const btnLinkedin = document.getElementById('btn-linkedin');
+const menuDevs = document.getElementById('menu-devs');
 
-        // Abre/Fecha ao clicar no ícone
-        btnLinkedin.addEventListener('click', (e) => {
-            e.stopPropagation(); // Impede o clique de chegar no 'window'
-            menuDevs.classList.toggle('mostrar');
-        });
+// Abre/Fecha ao clicar no ícone
+btnLinkedin.addEventListener('click', (e) => {
+    e.stopPropagation(); // Impede o clique de chegar no 'window'
+    menuDevs.classList.toggle('mostrar');
+});
 
-        // Fecha o menu se clicar em qualquer outro lugar da tela
-        window.addEventListener('click', () => {
-            if (menuDevs.classList.contains('mostrar')) {
-                menuDevs.classList.remove('mostrar');
-            }
-        });
+// Fecha o menu se clicar em qualquer outro lugar da tela
+window.addEventListener('click', () => {
+    if (menuDevs.classList.contains('mostrar')) {
+        menuDevs.classList.remove('mostrar');
+    }
+});
 
 
 /// 
