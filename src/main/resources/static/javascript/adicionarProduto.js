@@ -108,6 +108,7 @@ function saveProduct() {
     // VALIDAÇÃO 2: Verifica se o preço foi preenchido e é positivo
     // Se estiver vazio OU for 0 ou negativo, mostra alerta e sai
     if(!price || price <= 0) return alert("Digite um preço válido!");
+    if(!stock || stock <= 0) return alert("Digite uma quantidade válida!");
 
     // PASSO 2: Chama a função centralizada do dataManager para adicionar o produto
     // Isto adiciona ao array global 'inventory' que é compartilhado com homepage.html

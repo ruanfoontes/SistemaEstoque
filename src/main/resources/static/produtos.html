@@ -19,8 +19,7 @@
                 <li><a href="homepage.html" class="nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="produtos.html" class="nav-item active"><i class="fas fa-boxes"></i> Produtos</a></li>
                 <li><a href="relatorio.html" class="nav-item"><i class="fas fa-exchange-alt"></i> Entradas/Saídas</a></li>
-                <li><a href="#" class="nav-item"><i class="fas fa-chart-line"></i> Relatórios</a></li>
-                <li><a href="#" class="nav-item"><i class="fas fa-cog"></i> Configurações</a></li>
+                <li><a href="configuracoes.html" class="nav-item"><i class="fas fa-cog"></i> Configurações</a></li>
             </ul>
         </nav>
     </header>
@@ -93,7 +92,7 @@
             </div>
             <div class="form-group">
                 <label>Quantidade Inicial</label>
-                <input type="number" id="pStock" value="0">
+                <input type="number" id="pStock" value="0" min="0" step="1" required>
             </div>
             <div class="form-group">
                 <label>Preço (R$)</label>
