@@ -1,76 +1,63 @@
-# Sistema de Estoque
 
-Um sistema de gerenciamento de estoque que facilita o manuseamento e a noção de quantidades de produtos no caixa da loja. O projeto inclui um backend em Java e um frontend em HTML, CSS e JavaScript para autenticação, gerenciamento de produtos e relatórios de entradas e saídas.
+O SistemaEstoque é uma solução inteligente desenvolvida pelo grupo TriDevs para facilitar o controle de mercadorias e a gestão de fluxo de caixa em pequenas lojas e comércios. O sistema permite o monitoramento em tempo real de entradas e saídas, garantindo que o lojista nunca perca a noção do seu inventário.
 
-## Descrição
+O que mudou? (Update)
+O sistema evoluiu de uma estrutura básica para o Spring Boot 3.x, trazendo maior estabilidade, tratamento de erros automático e uma arquitetura baseada em RestControllers.
 
-Este projeto é um sistema de estoque projetado para auxiliar no controle de quantidades de produtos em um ambiente de loja, especialmente no caixa. Permite aos usuários se registrarem, fazerem login e gerenciar produtos, incluindo adição, visualização e registro de entradas e saídas. O backend armazena dados em memória (não persistente) e o frontend oferece uma interface intuitiva para operações diárias. É ideal para pequenos negócios ou como protótipo para sistemas mais avançados.
+Funcionalidades
+Autenticação Completa: Sistema de Registro e Login integrado entre Front-end (JS) e Back-end (Java).
 
-## Funcionalidades
+Validação Inteligente: Otimização de formulários no cliente (Regex para e-mail e regras de tamanho) e no servidor.
 
-- **Registro de Usuário**: Cadastro com nome, email e senha, incluindo validação de termos de serviço.
-- **Login**: Autenticação com email e senha.
-- **Validação de Formulários**: Verificação de campos obrigatórios, formato de email e comprimento mínimo de senha no frontend.
-- **Gerenciamento de Produtos**: Adição de novos produtos com validação de quantidade (positiva e inteira), visualização de produtos existentes.
-- **Relatórios de Entradas/Saídas**: Registro e visualização de movimentações de estoque (entradas e saídas de produtos).
-- **Dashboard**: Página inicial com navegação para produtos, relatórios e configurações, incluindo categorias de produtos.
-- **Interface Responsiva**: Design adaptável para diferentes dispositivos.
+Gestão de Inventário: Cadastro de produtos com validação de quantidades positivas.
 
-## Tecnologias Utilizadas
+Movimentações: Registro detalhado de Entradas e Saídas para relatórios precisos.
 
-- **Backend**:
-  - Java 17
-  - Spark Framework (para API REST)
-  - Gson (para manipulação de JSON)
-  - Maven (gerenciamento de dependências)
+Dashboard Responsivo: Interface adaptável para PCs e Tablets, facilitando o uso no balcão da loja.
 
-- **Frontend**:
-  - HTML5
-  - CSS3 (com Google Fonts)
-  - JavaScript (ES6, validação, submissão assíncrona e manipulação de DOM)
+Comunicação Assíncrona: Uso de Fetch API para operações sem recarregar a página (SPA style).
 
-- **Outros**:
-  - In-memory storage (HashMap para usuários e produtos)
+Tecnologias Utilizadas
+Back-end
+Java 17+
 
-## Pré-requisitos
+Spring Boot 3.x (Web Starter)
 
-- Java 17 ou superior instalado.
-- Maven instalado.
-- Navegador web moderno (para frontend).
+Maven (Gerenciamento de dependências e Build)
 
-## Como Executar
+Jackson (Serialização de JSON nativa do Spring)
 
-1. Clone o repositório:
-   ```
-   git clone <url-do-repositorio>
-   cd SistemaEstoque
-   ```
+Front-end
+HTML5 & CSS3 (Design moderno com Google Fonts)
 
-2. Compile o projeto com Maven:
-   ```
-   mvn clean compile
-   ```
+JavaScript (ES6+) (Manipulação de DOM e Fetch API)
 
-3. Execute a aplicação:
-   ```
-   mvn exec:java -Dexec.mainClass="Main"
-   ```
-   Ou diretamente com Java:
-   ```
-   java -cp target/classes Main
-   ```
+Estrutura do Projeto
+/src/main/java: Contém a lógica de negócio, Controllers e modelos.
 
-4. Abra o navegador e acesse `http://localhost:8080` para a página inicial.
+/src/main/resources/static: Hospeda os arquivos de interface (HTML, CSS, JS).
 
-## Melhorias Futuras
+pom.xml: Configurações de dependências e versões do projeto.
 
-- Implementar persistência de dados (banco de dados real como MySQL ou PostgreSQL).
-- Adicionar hashing de senhas para segurança.
-- Expandir funcionalidades com edição e exclusão de produtos.
-- Incluir autenticação baseada em sessões ou tokens JWT.
-- Adicionar testes unitários e de integração.
-- Implementar notificações para baixos estoques.
+Pré-requisitos
+Java JDK 17 ou superior.
 
-## Autores
+Maven instalado e configurado no PATH.
 
-Desenvolvido por crzin2512-2025, ruanfontes e Zezim69.
+VS Code com a extensão Spring Boot Dashboard (recomendado).
+
+Como Rodar o Projeto
+Clone o repositório do TriDevs.
+
+Abra a pasta raiz no seu VS Code.
+
+No terminal, execute:
+
+Bash
+mvn spring-boot:run
+O sistema estará disponível em: http://localhost:8080/index.html.
+
+Desenvolvedores (TriDevs)
+Ruan Fontes - Back-End Developer & Integração.
+
+Colaboradores do grupo TriDevs.
