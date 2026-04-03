@@ -20,6 +20,8 @@ public class Main {
                     "password VARCHAR(255))");
             System.out.println("Banco de Dados Ok!");
 
+
+            
         } catch (SQLException e) {
             System.err.println("ERRO AO INICIAR BANCO: " + e.getMessage()); // Corrigido getMessage
         }
