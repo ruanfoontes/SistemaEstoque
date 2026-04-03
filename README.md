@@ -1,10 +1,10 @@
-
+# SISTEMA ESTOQUE #
 O SistemaEstoque é uma solução inteligente desenvolvida pelo grupo TriDevs para facilitar o controle de mercadorias e a gestão de fluxo de caixa em pequenas lojas e comércios. O sistema permite o monitoramento em tempo real de entradas e saídas, garantindo que o lojista nunca perca a noção do seu inventário.
 
-O que mudou? (Update)
+# O que mudou? (Update): # 
 O sistema evoluiu de uma estrutura básica para o Spring Boot 3.x, trazendo maior estabilidade, tratamento de erros automático e uma arquitetura baseada em RestControllers.
 
-Funcionalidades
+# Funcionalidades #
 Autenticação Completa: Sistema de Registro e Login integrado entre Front-end (JS) e Back-end (Java).
 
 Validação Inteligente: Otimização de formulários no cliente (Regex para e-mail e regras de tamanho) e no servidor.
@@ -17,7 +17,7 @@ Dashboard Responsivo: Interface adaptável para PCs e Tablets, facilitando o uso
 
 Comunicação Assíncrona: Uso de Fetch API para operações sem recarregar a página (SPA style).
 
-Tecnologias Utilizadas
+# Tecnologias Utilizadas #
 Back-end
 Java 17+
 
@@ -32,7 +32,7 @@ HTML5 & CSS3 (Design moderno com Google Fonts)
 
 JavaScript (ES6+) (Manipulação de DOM e Fetch API)
 
-Estrutura do Projeto
+# Estrutura do Projeto #
 /src/main/java: Contém a lógica de negócio, Controllers e modelos.
 
 /src/main/resources/static: Hospeda os arquivos de interface (HTML, CSS, JS).
@@ -46,7 +46,7 @@ Maven instalado e configurado no PATH.
 
 VS Code com a extensão Spring Boot Dashboard (recomendado).
 
-Como Rodar o Projeto
+# Como Rodar o Projeto? #
 Clone o repositório do TriDevs.
 
 Abra a pasta raiz no seu VS Code.
