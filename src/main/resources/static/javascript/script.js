@@ -87,11 +87,11 @@ async function submitToServer(event) {
     if (event) event.preventDefault();
 
     console.log("Tentando enviar para o Java...");
-    const baseUrl = 'http://localhost:8080';
-    const path = form.dataset.endpoint || '/register';
-    const endpoint = baseUrl + path;
+
+    const endpoint = 'http://localhost:8080/api/register';
 
     const payload = getFormData();
+    console.log("JSON que será enviado:", JSON.stringify(playload));
 
     try {
         const response = await fetch(endpoint, {
