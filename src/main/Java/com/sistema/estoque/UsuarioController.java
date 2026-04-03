@@ -20,4 +20,20 @@ public class UsuarioController {
         
         return "sucesso"; // Retorna 'sucesso' para o seu script.js redirecionar
     }
+
+    @PostMapping("/login") 
+    public String loginUser(@RequestBody Map<String, String> payload) {
+        String email = payload.get("email");
+        String senha = payload.get("password");
+
+        System.out.println("--- TENTATIVA DE LOGIN NO f.Stock ---");
+        System.out.println("E-mail: " + email);
+        System.out.println("Senha: " + senha);
+
+        if (email != null && !email.isEmpty() && senha != null && !senha.isEmpty()) {
+            return "sucesso"; 
+        } else {
+            return "erro";
+        }
+    }
 }

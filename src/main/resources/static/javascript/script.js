@@ -83,14 +83,16 @@ function getFormData() {
 }
 
 async function submitToServer(event) {
-    // Se você passar o evento, previne o refresh da página
     if (event) event.preventDefault();
 
     console.log("Tentando enviar para o Java...");
 
-    const endpoint = 'http://localhost:8080/api/register';
+    const path = form.dataset.endpoint || '/login';
+    const endpoint = 'http://localhost:8080{path}';
 
+    console.log("Enviando para o endpoint:", endpoint);
     const payload = getFormData();
+
     console.log("JSON que será enviado:", JSON.stringify(playload));
 
     try {
@@ -103,19 +105,15 @@ async function submitToServer(event) {
         const text = await response.text();
         console.log("Resposta do java:", text);
 
-        if (response.ok || text.includes("sucesso")) {
-            console.log("Login confirmado. Iniciando redirecionamento...");
+        if (response.ok || text.toLoswerCase().include("sucesso")) {
 
-            // Forçar o caminho correto
             const destino = (path === '/register') ? 'index.html' : 'homepage.html'; // Ajuste 'dashboard.html' para o seu nome real
 
             console.log("Tentando navegar para: " + destino);
-
-            // O replace é melhor que o href para redirecionamentos de login
             window.location.assign(destino);
 
         } else {
-            alert("Dados incorretos.");
+            alert("Erro: verifique os dados informados.");
         }
     } catch (error) {
         console.error('Erro na requisição:', error);
@@ -152,6 +150,3 @@ window.addEventListener('click', () => {
         menuDevs.classList.remove('mostrar');
     }
 });
-
-
-/// 
