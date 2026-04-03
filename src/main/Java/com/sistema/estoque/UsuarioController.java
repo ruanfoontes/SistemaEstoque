@@ -26,7 +26,7 @@ public class UsuarioController {
         String email = payload.get("email");
         String senha = payload.get("password");
 
-        System.out.println("--- TENTATIVA DE LOGIN NO f.Stock ---");
+        System.out.println("--- TENTATIVA DE LOGIN ---");
         System.out.println("E-mail: " + email);
         System.out.println("Senha: " + senha);
 
