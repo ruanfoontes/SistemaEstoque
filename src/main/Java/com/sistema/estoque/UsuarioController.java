@@ -1,39 +1,34 @@
 package com.sistema.estoque;
 
+import com.sistema.estoque.model.Usuario; 
+import com.sistema.estoque.repository.UsuarioRepository; 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "*") // Essencial para o script.js não ser bloqueado
+@RequestMapping("/api/usuarios") 
 public class UsuarioController {
 
-    @PostMapping("/register") // Mapeia exatamente o que o console sugeriu
-    public String registerUser(@RequestBody Map<String, String> payload) {
-        
-        // No seu JS, você envia 'name', 'email' e 'password'
-        String nome = payload.get("name");
-        String email = payload.get("email");
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
-        System.out.println("--- Cadastrado com Sucesso! ---");
-        System.out.println("Usuário: " + nome);
-        System.out.println("E-mail: " + email);
-        
-        return "sucesso"; // Retorna 'sucesso' para o seu script.js redirecionar
+    @PostMapping("/register") 
+    public String registerUser (@RequestBody Usuario usuario) {
+        if (usuario == null) {
+            return "Erro: Dados do usuário não fornecidos.";
+        }
+        usuarioRepository.save(usuario);
+        return "Usuário Registrado com sucesso no banco!";  
     }
 
     @PostMapping("/login") 
-    public String loginUser(@RequestBody Map<String, String> payload) {
-        String email = payload.get("email");
-        String senha = payload.get("password");
-
-        System.out.println("--- TENTATIVA DE LOGIN ---");
-        System.out.println("E-mail: " + email);
-        System.out.println("Senha: " + senha);
-
-        if (email != null && !email.isEmpty() && senha != null && !senha.isEmpty()) {
-            return "sucesso"; 
-        } else {
-            return "erro";
-        }
+    
+    public ResponseEntity<String> login(@RequestBody Usuario loginDados) {
+        return usuarioRepository.findByEmail(loginDados.getEmail())
+            .filter(u -> u.getSenha().equals(loginDados.getSenha()))
+            .map(u -> ResponseEntity.ok("login realizado!"))
+            .orElse(ResponseEntity.status(401).body("E-mail ou senha incorretos"));
+            
     }
 }
