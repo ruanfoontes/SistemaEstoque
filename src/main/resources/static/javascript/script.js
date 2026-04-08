@@ -88,12 +88,12 @@ async function submitToServer(event) {
     console.log("Tentando enviar para o Java...");
 
     const path = form.dataset.endpoint || '/login';
-    const endpoint = 'http://localhost:8080{path}';
+    const endpoint = 'http://localhost:8080${path}';
 
     console.log("Enviando para o endpoint:", endpoint);
     const payload = getFormData();
 
-    console.log("JSON que será enviado:", JSON.stringify(playload));
+    console.log("JSON que será enviado:", JSON.stringify(payload));
 
     try {
         const response = await fetch(endpoint, {
@@ -107,7 +107,7 @@ async function submitToServer(event) {
 
         if (response.ok || text.toLoswerCase().include("sucesso")) {
 
-            const destino = (path === '/register') ? 'index.html' : 'homepage.html'; // Ajuste 'dashboard.html' para o seu nome real
+            const destino = (path === '/register') ? 'index.html' : 'homepage.html'; 
 
             console.log("Tentando navegar para: " + destino);
             window.location.assign(destino);
@@ -133,7 +133,7 @@ form.addEventListener('submit', validator.handleSubmit);
 
 
 
-//icones do linkedin
+
 
 const btnLinkedin = document.getElementById('btn-linkedin');
 const menuDevs = document.getElementById('menu-devs');
@@ -144,7 +144,7 @@ btnLinkedin.addEventListener('click', (e) => {
     menuDevs.classList.toggle('mostrar');
 });
 
-// Fecha o menu se clicar em qualquer outro lugar da tela
+
 window.addEventListener('click', () => {
     if (menuDevs.classList.contains('mostrar')) {
         menuDevs.classList.remove('mostrar');
