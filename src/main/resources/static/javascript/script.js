@@ -74,11 +74,12 @@ let form = document.querySelector('.validator');
 function getFormData() {
     const emailInput = form.querySelector('#input-email');
     const passInput = form.querySelector('#input-pass');
+    const nameInput = form.querySelector('#input-name') || emailInput;
 
     return {
-        email: emailInput ? emailInput.value.trim() : '',
-        password: passInput ? passInput.value : '',
-        name: form.dataset.endpoint === '/register' && emailInput ? emailInput.value.trim() : ''
+        nome: nameInput ? nameInput.value.trim() : '',
+        email: emailInput ? emailInput.value : '',
+        senha: passInput ? passInput.value : ''
     };
 }
 
@@ -88,12 +89,10 @@ async function submitToServer(event) {
     console.log("Tentando enviar para o Java...");
 
     const path = form.dataset.endpoint || '/login';
-    const endpoint = 'http://localhost:8080${path}';
+    const endpoint = `http://localhost:8080/api/usuarios${path}` ;
 
     console.log("Enviando para o endpoint:", endpoint);
     const payload = getFormData();
-
-    console.log("JSON que será enviado:", JSON.stringify(payload));
 
     try {
         const response = await fetch(endpoint, {
@@ -105,7 +104,7 @@ async function submitToServer(event) {
         const text = await response.text();
         console.log("Resposta do java:", text);
 
-        if (response.ok || text.toLoswerCase().include("sucesso")) {
+        if (response.ok || text.toLowerCase().includes("sucesso")) {
 
             const destino = (path === '/register') ? 'index.html' : 'homepage.html'; 
 
@@ -122,18 +121,6 @@ async function submitToServer(event) {
 }
 
 form.addEventListener('submit', validator.handleSubmit);
-
-
-
-
-
-
-
-
-
-
-
-
 
 const btnLinkedin = document.getElementById('btn-linkedin');
 const menuDevs = document.getElementById('menu-devs');
